@@ -28,9 +28,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .headers(headers -> headers.frameOptions().disable()) // 👈 нужно для H2
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable())
+                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/h2-console/**").permitAll() // 👈 разрешаем H2
+                        .requestMatchers("/auth/**", "/h2-console/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
@@ -41,6 +43,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
 
     @Bean

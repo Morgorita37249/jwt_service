@@ -11,5 +11,5 @@ public class RegisterRequest {
     public String password;
     public String email;
     public Role role = Role.GUEST;
-    // getters and setters
+
 }

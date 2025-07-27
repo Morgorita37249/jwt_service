@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL) // <-- вот это ключ
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthResponse {
     private final String token;
     private final String refreshToken;
@@ -15,7 +15,7 @@ public class AuthResponse {
     }
 
     public AuthResponse(String token) {
-        this(token, null); // делегирует в основной конструктор
+        this(token, null);
     }
 }
 
